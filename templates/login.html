@@ -1,0 +1,22 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Login - Registro de Ponto</title>
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Registro de Ponto</h1>
+    {% if error %}
+      <div class="error">{{ error }}</div>
+    {% endif %}
+    <form method="POST">
+      <input name="nome" placeholder="Usuário" required>
+      <input name="senha" placeholder="Senha" type="password" required>
+      <button type="submit">Entrar</button>
+    </form>
+    <p>Admin padrão: <b>admin</b> / <b>admin</b></p>
+  </div>
+</body>
+</html>

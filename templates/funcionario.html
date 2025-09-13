@@ -1,0 +1,46 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Funcionário - Registro</title>
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Olá, {{ nome }}</h1>
+    {% if message %}
+      <div class="success">{{ message }}</div>
+    {% endif %}
+    <!-- GPS capture -->
+<form method="POST" id="pontoForm">
+      <button type="button" class="big" onclick="baterPonto('Entrada')">Registrar Entrada</button>
+      <button type="button" class="big" onclick="baterPonto('Saída')">Registrar Saída</button>
+<script>
+function baterPonto(tipo) {
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(function(position) {
+            const lat = position.coords.latitude;
+            const lon = position.coords.longitude;
+            const form = document.getElementById("pontoForm");
+            const inputTipo = document.createElement("input"); inputTipo.name="tipo"; inputTipo.value=tipo; form.appendChild(inputTipo);
+            const inputLat = document.createElement("input"); inputLat.name="latitude"; inputLat.value=lat; form.appendChild(inputLat);
+            const inputLon = document.createElement("input"); inputLon.name="longitude"; inputLon.value=lon; form.appendChild(inputLon);
+            form.submit();
+        }, function(error){ alert("Não foi possível capturar localização: "+error.message); });
+    } else { alert("Geolocalização não suportada neste navegador."); }
+}
+</script>
+    </form>
+
+    <h3>Últimos registros</h3>
+    <table>
+      <tr><th>Horário</th><th>Tipo</th></tr>
+      {% for r in registros %}
+        <tr><td>{{ r['horario'] }}</td><td>{{ r['tipo'] }}</td></tr>
+      {% endfor %}
+    </table>
+
+    <p><a href="/logout">Sair</a></p>
+  </div>
+</body>
+</html>
