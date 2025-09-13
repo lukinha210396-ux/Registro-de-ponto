@@ -1,0 +1,14 @@
+body { font-family: Arial, sans-serif; background:#f4f6f9; color:#222; }
+.container { max-width:800px; margin:30px auto; background:white; padding:20px; border-radius:6px; box-shadow:0 2px 6px rgba(0,0,0,0.08); }
+h1 { margin-top:0; }
+input { display:block; width:100%; padding:8px; margin:8px 0; box-sizing:border-box; }
+button { padding:10px 14px; margin:6px 0; cursor:pointer; }
+.big { padding:14px 18px; width:48%; display:inline-block; }
+table { width:100%; border-collapse:collapse; margin-top:10px; }
+table, th, td { border:1px solid #ddd; }
+th, td { padding:8px; text-align:left; }
+.box { margin-bottom:20px; }
+.error { background:#ffd6d6; padding:8px; border-radius:4px; color:#900; }
+.success { background:#d7ffd9; padding:8px; border-radius:4px; color:#070; }
+.info { background:#e7f3ff; padding:8px; border-radius:4px; color:#036; }
+.export { display:inline-block; margin-bottom:8px; }

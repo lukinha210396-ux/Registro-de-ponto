@@ -1,0 +1,48 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Admin - Registros</title>
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Painel do Administrador</h1>
+
+    <section class="box">
+      <h2>Criar funcionário</h2>
+      {% if create_msg %}
+        <div class="info">{{ create_msg }}</div>
+      {% endif %}
+      <form method="POST">
+        <input type="hidden" name="action" value="criar">
+        <input name="nome" placeholder="Nome (login) do funcionário" required>
+        <input name="senha" placeholder="Senha" required>
+        <button type="submit">Criar Funcionário</button>
+      </form>
+    </section>
+
+    <section class="box">
+      <h2>Registros (mais recentes)</h2>
+      <a class="export" href="/exportar">Exportar registros (CSV)</a>
+      <table>
+        <tr><th>Funcionário</th><th>Horário</th><th>Tipo</th><th>Latitude</th><th>Longitude</th></tr>
+        {% for r in registros %}
+          <tr><td>{{ r["funcionario"] }}</td><td>{{ r["horario"] }}</td><td>{{ r["tipo"] }}</td><td>{{ r["latitude"] }}</td><td>{{ r["longitude"] }}</td></tr>
+        {% endfor %}
+      </table>
+    </section>
+
+    <section class="box">
+      <h2>Funcionários cadastrados</h2>
+      <ul>
+        {% for f in funcionarios %}
+          <li>{{ f['nome'] }}</li>
+        {% endfor %}
+      </ul>
+    </section>
+
+    <p><a href="/logout">Sair</a></p>
+  </div>
+</body>
+</html>
